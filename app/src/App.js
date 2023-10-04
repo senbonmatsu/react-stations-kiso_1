@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [threads,setThreads] = useState([]);
+  useEffect(()=>{
+  fetch('https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=1')
+  .then(res=>res.json())
+  .then(data => {
+    setThreads(data)
+    console.log(data)
+  })},[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <>
+    <header className="App-header">
+      <h3>掲示板</h3>
+    </header>
+    <div className='App-body'>
+      <h5>新着スレッド</h5>
+      <div>
+        <table className='App-table'>
+          <tbody>
+          {
+            threads.map(threads => 
+              <tr className='App-table-tr' key={threads.id}>
+                <td className='App-table-td' key={threads.id}>{threads.title}</td>
+              </tr>
+            )
+          }
+          </tbody>
+        </table>
+      </div>
     </div>
+    <footer></footer>
+  </>
   );
 }
 

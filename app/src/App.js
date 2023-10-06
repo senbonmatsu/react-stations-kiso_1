@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   const [threads,setThreads] = useState([]);
   useEffect(()=>{
-  fetch('https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=1')
+  fetch('https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=0')
   .then(res=>res.json())
   .then(data => {
     setThreads(data)

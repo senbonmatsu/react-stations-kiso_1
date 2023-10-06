@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
@@ -13,8 +12,11 @@ function App() {
   })},[])
   return (
   <>
+    {/* <BrowserRouter> */}
     <header className="App-header">
       <h3>掲示板</h3>
+      {/* <Link to='thread/new'>スレッドを立てる</Link> */}
+      <p to='thread/new'>スレッドを立てる</p>
     </header>
     <div className='App-body'>
       <h5>新着スレッド</h5>
@@ -33,6 +35,14 @@ function App() {
       </div>
     </div>
     <footer></footer>
+    {/* <Router>
+      <Routes>
+        <Route exact path='thread/new'>
+          <Make_threads />
+        </Route>
+      </Routes>
+    </Router>
+    </BrowserRouter> */}
   </>
   );
 }

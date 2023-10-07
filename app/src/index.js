@@ -1,13 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App';
+import { HomeTreads } from './homeThreads';
 import './index.css';
+import { MakeThreads } from './Make_threads';
 import reportWebVitals from './reportWebVitals';
+
+const Rooter = createBrowserRouter([
+  {
+    path:'/',
+    element:<App />,
+    children:[
+      {
+        path:'thread/new',
+        element:<MakeThreads />,
+      },
+      {
+        path:'/',
+        element:<HomeTreads />,
+      }
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={Rooter}/>
   </React.StrictMode>
 );
 
